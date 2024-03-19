@@ -1,0 +1,17 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@inject IBus Bus
+
+<PageTitle>Home</PageTitle>
+
+<button class="btn btn-primary mt-4" @onclick="DispatchMessage">Publish Hello, world!</button>
+
+@code {
+    private async Task DispatchMessage()
+    {
+        await Bus.Publish(new MessageContract
+        {
+            Message = "Hello, world!"
+        });
+    }
+}
